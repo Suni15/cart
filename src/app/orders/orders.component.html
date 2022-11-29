@@ -1,0 +1,28 @@
+<div class="container">
+    <h1>YOURS ORDERS</h1>
+    <ul>
+        <li *ngFor="let o of orders">
+            <div class="o">
+                OrderId: {{o.orderId}}<br>
+                TotatCost:{{totalCost}}<br>
+                ITEMS:
+                <div class="h" *ngFor="let p of o.product">
+                    <div >
+                        <img width="150" height="100" src="{{p.image}}">
+                        {{p.productName}}
+                        Cost:{{p.cost}}
+                        
+                        <button (click)="removefromcart(o.orderId,p.productId)" class="form-control"  class="btn btn-danger">Remove</button>
+
+                    </div>
+                   
+                    {{addTotalCost(p.cost)}}
+                </div>
+                {{totalCostZero()}}
+            </div>
+        </li>
+    </ul>
+
+
+</div>
+<button (click)="placeorder()" class="form-control"  class="btn btn-success">place order</button> 
